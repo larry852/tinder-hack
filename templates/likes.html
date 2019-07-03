@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Tinder hack | Likes</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{{ url_for('static', filename='css/portfolio-item.css') }}" rel="stylesheet">
+
+</head>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="/">Tinder hack | Likes | {{data|length}}</a>
+</nav>
+
+<!-- Page Content -->
+	<!-- Portfolio Item Row -->
+	<br>
+	<br>
+	<br>	
+	<div class="col-sm-12">
+		{% for tinder in data %}
+		<h3>Profile {{ data|length - loop.index + 1 }}</h3>
+		<div class="col-sm-12">
+			{% for photo in tinder.user.photos %}
+			<a href="{{photo.url}}">
+				<img class="thumb" src="{{photo.url}}">
+			</a>
+			{% endfor %}
+		</div>
+		<br>
+		{% endfor %}
+	</div>
+	<!-- /.row -->
+
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+
+</html>
