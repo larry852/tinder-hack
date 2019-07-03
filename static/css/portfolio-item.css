@@ -4,20 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-portfolio-item/blob/master/LICENSE)
  */
 
-body {
-  padding-top: 54px;
-}
-
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
-}
-
-
 .thumb{
- height: 300px;
- width: 200px;
+ height: 150px;
+ width: 150px;
  border: 1px solid #000;
  margin: 10px 5px 0 0;
 }
