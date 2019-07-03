@@ -12,7 +12,7 @@ def likes():
         'token') is None else request.args.get('token')
     url = 'https://api.gotinder.com/v2/fast-match/teasers'
     data = get_data(token, url)
-    return render_template('likes.html', data=data.get('data').get('results'))
+    return render_template('likes.html', data=data.get('data').get('results'), token=token)
 
 
 @app.route('/search', methods=['GET'])
@@ -21,7 +21,7 @@ def search():
         'token') is None else request.args.get('token')
     url = 'https://api.gotinder.com/v2/recs/core'
     data = get_data(token, url)
-    return render_template('search.html', data=data.get('data').get('results'))
+    return render_template('search.html', data=data.get('data').get('results'), token=token)
 
 
 @app.route('/match', methods=['GET'])
