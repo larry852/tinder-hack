@@ -30,3 +30,5 @@ http://localhost:5000/search?token=3e8cd831-519e-433c-9941-3fdc1a71868d
 
 ## Nice to have
 - Authentication. Auto generate token.
+- Get valid id of list of likes.
+- Compare photos feature.
