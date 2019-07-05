@@ -12,7 +12,7 @@ python app.py
 ```
 
 ## Endpoints
-Get token of X-Auth-Token header on https://tinder.com, you can search by https://api.gotinder.com requests. 
+Get *token* of X-Auth-Token header on https://tinder.com, you can search by https://api.gotinder.com requests. 
 
 ### Likes service
 - Get list of likes of your profile.
