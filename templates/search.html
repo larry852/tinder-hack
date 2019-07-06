@@ -29,7 +29,7 @@
 <br>
 <div class="col-sm-12">
 	{% for tinder in data %}
-	<h3><a target="_blank" href="/match?id={{tinder.user._id}}?token={{token}}">{{tinder.user.name}}</a></h3>
+	<h3><a target="_blank" href="/match?id={{tinder.user._id}}&token={{token}}">{{tinder.user.name}}</a></h3>
 	<div class="col-sm-12">
 		{% for photo in tinder.user.photos %}
 			<a href="{{photo.url}}">
