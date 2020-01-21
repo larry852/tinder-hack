@@ -3,7 +3,7 @@ import urllib
 import json
 
 app = Flask(__name__)
-TOKEN = '3e8cd831-519e-433c-9941-3fdc1a71868d'
+TOKEN = '7c42ad1e-8194-4f5a-92d0-bbbd096ddc1a'
 
 
 @app.route('/likes', methods=['GET'])
@@ -54,4 +54,4 @@ def exclude_profile_list(data, id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
