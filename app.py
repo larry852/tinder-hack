@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 import urllib
 import json
+from PIL import Image
+import numpy as np
 
 app = Flask(__name__)
-TOKEN = '7c42ad1e-8194-4f5a-92d0-bbbd096ddc1a'
+TOKEN = '4b25cd19-cfa6-46b0-9c16-67745a6ca844'
 
 
 @app.route('/likes', methods=['GET'])
@@ -34,6 +36,29 @@ def match():
     return "NEW MATCH!!!"
 
 
+@app.route('/auto-match', methods=['GET'])
+def auto_match():
+    count = 0
+    token = TOKEN if request.args.get(
+        'token') is None else request.args.get('token')
+    url = 'https://api.gotinder.com/v2/fast-match/teasers'
+    likes = get_data(token, url).get('data').get('results')
+    url = 'https://api.gotinder.com/v2/recs/core'
+    candidates = get_data(token, url).get('data').get('results')
+    for like in likes:
+        for candidate in candidates:
+            for photo in candidate.get('user').get('photos'):
+                if is_same(like.get('user').get('photos')[0].get('url'), photo.get('url')):
+                    url = 'https://api.gotinder.com/like/{}'.format(
+                        candidate.get('user').get('_id'))
+                    get_data(token, url)
+                    count += 1
+                    break
+    response = "{} NEW MATCHS!!!" if count > 1 else "{} NEW MATCH!!!"
+    response += " Try again" if count == 0 else ""
+    return response.format(count)
+
+
 def get_data(token, url):
     headers = {}
     headers['X-Auth-Token'] = token
@@ -51,6 +76,16 @@ def exclude_profile_list(data, id):
     except:
         pass
     return data
+
+
+def is_same(url1, url2):
+    try:
+        size = (300, 300)
+        image1 = Image.open(urllib.request.urlopen(url1))
+        image2 = Image.open(urllib.request.urlopen(url2))
+        return list(image1.getdata()) == list(image2.getdata())
+    except:
+        return False
 
 
 if __name__ == "__main__":
